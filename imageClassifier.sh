@@ -11,6 +11,9 @@ do
     then
         continue
     fi
+    if [ -d $i ];then
+        continue
+    fi
     s=`identify -verbose code.jpg | sed -ne '/date:create: /p' | awk '{print $2}'`
     year=`echo $s | cut -c -4`
     month=`echo $s | cut -c 6- | cut -c -2`
@@ -32,6 +35,5 @@ do
     if [ -d $j ];then
         continue
     fi
-    #echo $j
     rm $j
 done
