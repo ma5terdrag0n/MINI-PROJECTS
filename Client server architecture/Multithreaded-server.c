@@ -36,6 +36,8 @@ int main(int argc, char *argv[] ){
   
   /*---- Bind the address struct to the socket ----*/
   bind(welcomeSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
+
+
   // It will listen for only 10 connections at a time :: MULTITHREADING
 
   pthread_t tommy;
@@ -45,8 +47,8 @@ int main(int argc, char *argv[] ){
             printf("Could not create connection with client %d",i);
             return 1;
         }
-        sleep(10);
-        // pthread_join(tommy, NULL);
+        // sleep(10);
+        pthread_join(tommy, NULL);
   }
   pthread_join(tommy, NULL);
   return 0;
